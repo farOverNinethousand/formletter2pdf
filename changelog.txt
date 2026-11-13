@@ -1,0 +1,160 @@
+====================================================================================
+formletter2pdf - change log
+====================================================================================
+
+============================
+v2.11 - October 2026
+============================
+
+- the dialog opens immediately; the data source is only read (with a cancellable progress bar) when the preview is refreshed or the export is started
+- the dialog can be resized (Windows only) and remembers its size until Word is closed;the preview list has fixed width columns and scrolls horizontally for long file names
+- a detail line below the preview list shows the complete file name and note of the selected row
+- the dialog and all messages are available in English and German: the language of Word is used at the start (setting DefaultLanguage in the module), and a drop-down at the top right of the dialog changes all texts at once; all texts are in a table at the end of the module formletter2pdf
+- the progress shows the remaining time (scan and export): the export starts with an estimate of 0.5 seconds per page of the main document (setting DefaultSecondsPerPage), which is adjusted live with the measured times
+- the result message shows the duration of the export
+- the label "Folder name" is called "Folder name pattern"
+- the link below the logo points to github.com/farOverNinethousand/formletter2pdf; the old website formletter2pdf.com is a second link next to it
+- new setting CustomDefaultFilenamePattern (default empty): an own default file name pattern which is shown in the dialog and does not trigger the error for the shipped default pattern
+- added the section "Messages" above the create button with three settings: confirm dialog before writing files (always, only when warnings exist, never), result message after the export (always, only when warnings exist, never) and opening the output folder (ask, open folder, do not open folder; Windows only). Errors are always shown.
+- added a check box "Enable quick scan" which limits the scan to the first 2 records (the export always reads all records)
+- added an error message if the file name pattern shipped with formletter2pdf is still used when scanning or exporting, because its fields normally do not exist in a data source (an own default pattern in the module is accepted)
+- the file types are shown as check boxes, so all of them are always visible without scroll bar
+- Word is no longer hidden during the export, so the progress bar and the cancel button stay visible
+- added an option to stop reading the data source and the export at the first record where ALL fields are empty (speeds up data sources with many empty rows); without this option empty records are skipped
+- the button "Export files" (german: "Export starten") shows the number of files after a scan ("Export 12 files")
+- messages and preview rows about an early stop show the total number of records (e.g. "record 17/150")
+- file types with the same file extension are counted only once in the preview; selecting several of them is rejected with an error which lists them, before the data source is read
+- new errors before anything is written (Windows): no write access to the storage location, file paths longer than 259 characters, file names reserved by Windows (CON, NUL, COM1, ...); the preview marks such file names
+- all checks of the settings (file types, file name pattern, field, storage location, folder name) are made before the data source is read or any file is written; new: error if the storage location does not exist
+- the "Cancel" button is called "Close"; while the export runs the export button is called "Abort export" and stops the export
+- fixed: the controls at the bottom (e.g. the donation text) were cut off by the resize border of the dialog
+- the scan button becomes "Abort scan" while the data source is read, and it is greyed out while the export runs
+- added a progress bar; the export can be cancelled with the cancel button
+- added an option to write a log file into the folder with the generated files
+- the dialog shows how many files will be created and a preview of all file names
+- the form letters can be saved in several file types at once (multi selection list instead of single choice, default: pdf)
+- added an option to stop scanning the data source and the export at the first record where a chosen data source field is empty; the form letters before are saved and a warning is shown
+- added handling of already existing files: ask, overwrite, skip or save with number; the folder may now already exist
+- fixed: dynamic fields were updated in the main document instead of the created document
+- fixed: after a run the mail merge was limited to the last record
+- fixed: records excluded in the recipient list were exported anyway
+- fixed: Rich Text Format was saved as plain text with the extension .rte (now .rtf)
+- fixed: "Web Page (.htm)" was not preselected as stored file type
+- fixed: the counter in the success message could be wrong when empty records were skipped
+- fixed: cancelling the print dialog still printed all further files
+- fixed: Windows Explorer did not open folders with spaces in the path reliably
+- fixed: file names ending with a dot or space, containing control characters or being too long
+- added Option Explicit and declared all variables
+
+============================
+v2.10 - April 2021
+============================
+
+- Fix a bug where the macro does not create any files at all
+
+============================
+v2.9 - June 2018
+============================
+
+- Improve Usability on current version of Office for Mac (no default path because of access rights, better description because of "frozen" application appearance during pdf creation)
+
+============================
+v2.8 - März 2018
+============================
+
+- fixed file handling, to work with Office for Mac again
+- permanently activated the feature to update dynamic fields in created documents
+- added the possibility to open the target saving directory after pdfs were generated (windows only)
+
+
+============================
+v2.7 - September 2017
+============================
+
+- fix a bug with folder selection dialog and special folders like "Desktop" or "Documents"
+
+
+============================
+v2.6 - March 2017
+============================
+
+- add option to directly print files additonal to saving during generation
+
+
+============================
+v2.5 - November 2016
+============================
+
+- fix folder selection dialog for choosing save path on windows 10
+
+
+============================
+v2.4 - November 2015
+============================
+
+- added the possibility to export pdfs according to the standard "PDF/A (ISO 19005-1-compatible)" for Office for Windows
+
+
+============================
+v2.3 - November 2015
+============================
+
+- adopted macro code to work with Microsoft Office for Mac 2016
+- the macro now preserves changes to the different options from the gui between multiple runs
+- added an optional method to export pdfs as comment into the source code, so you can make use of the built in pdf export function with all availabe options if needed
+- added links to formletter2pdf website and the donation form to the gui of the macro
+
+
+============================
+v2.2 - April 2015
+============================
+
+- added a marker to include the file name of the word document into the file name pattern
+- created an easy option to set the default values of the macro
+
+
+============================
+v2.1 - September 2014
+============================
+
+- extended gui with an option to list all available data source field markers
+
+
+============================
+v2.0
+============================
+
+- improved internal error and path management
+- added support for Microsoft Office for Mac 2011
+
+
+============================
+v1.3
+============================
+
+- added the option to save the output files in almost all file formats supported by Microsoft Word
+- upgraded the word file to office 2013 file format
+
+
+============================
+v1.2
+============================
+
+- fixed a bug where all form letters where saved in each single file
+- updated introduction in Word Document
+
+
+============================
+v1.1
+============================
+
+- fixed a bug where the field name markers in the file name pattern didn't get replaced
+- simplified file name structure in download package
+- added this release notes
+
+
+============================
+v1.0
+============================
+
+- first published version
